@@ -25,12 +25,16 @@ export default function LessonScreen() {
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     const [isAnswered, setIsAnswered] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
     // Reset state when lesson changes
     React.useEffect(() => {
         setSelectedOption(null);
         setIsAnswered(false);
         setIsCorrect(null);
+        setCurrentPage(0);
+        setCurrentQuestionIndex(0);
     }, [lessonId]);
 
     const handleOptionPress = (index: number) => {
@@ -39,13 +43,29 @@ export default function LessonScreen() {
     };
 
     const handleCheck = () => {
+        const currentData = lesson.questions ? lesson.questions[currentQuestionIndex] : lesson;
         if (selectedOption === null) return;
-        const correct = selectedOption === lesson.correctIndex;
+        const correct = selectedOption === currentData.correctIndex;
         setIsCorrect(correct);
         setIsAnswered(true);
     };
 
     const handleNext = async () => {
+        // If there are multiple pages (theory), move to next page
+        if (lesson.pages && currentPage < lesson.pages.length - 1) {
+            setCurrentPage(prev => prev + 1);
+            return;
+        }
+
+        // If there are multiple questions, move to next question
+        if (lesson.questions && currentQuestionIndex < lesson.questions.length - 1) {
+            setCurrentQuestionIndex(prev => prev + 1);
+            setSelectedOption(null);
+            setIsAnswered(false);
+            setIsCorrect(null);
+            return;
+        }
+
         // Mark as complete in DB
         if (typeof lessonId === 'string' && lessonId.includes('-')) {
             const levelNum = lessonId.split('-')[0].replace('l', '');
@@ -76,6 +96,16 @@ export default function LessonScreen() {
         );
     }
 
+    // Get current content (support both old and new multi-page structure)
+    const displayContent = lesson.pages ? lesson.pages[currentPage] : {
+        explanation: lesson.explanation,
+        content: lesson.content,
+        title: lesson.title
+    };
+
+    // Get current question (support both old and new multi-question structure)
+    const currentQuestionData = lesson.questions ? lesson.questions[currentQuestionIndex] : lesson;
+
     return (
         <GradientBackground style={styles.container}>
             {/* Header */}
@@ -83,21 +113,35 @@ export default function LessonScreen() {
                 <Pressable onPress={() => router.back()} style={styles.backButton}>
                     <Ionicons name="close" size={24} color={COLORS.text} />
                 </Pressable>
-                <Text style={styles.progressText}>{lesson.type === 'question' ? 'Quick Check' : 'Lesson'}</Text>
+                <View style={styles.headerTitleContainer}>
+                    <Text style={styles.progressText}>
+                        {lesson.type === 'question' ? 'Quick Check' : 'Lesson'}
+                    </Text>
+                    {lesson.pages && lesson.pages.length > 1 && (
+                        <Text style={styles.pageIndicator}>
+                            Page {currentPage + 1} of {lesson.pages.length}
+                        </Text>
+                    )}
+                    {lesson.questions && lesson.questions.length > 1 && (
+                        <Text style={styles.pageIndicator}>
+                            Question {currentQuestionIndex + 1} of {lesson.questions.length}
+                        </Text>
+                    )}
+                </View>
                 <View style={{ width: 24 }} />
             </View>
 
             <ScrollView contentContainerStyle={styles.content}>
                 {lesson.type === 'question' ? (
                     <View style={styles.questionContainer}>
-                        <Text style={styles.questionText}>{lesson.question}</Text>
+                        <Text style={styles.questionText}>{currentQuestionData.question}</Text>
                         <View style={styles.optionsContainer}>
-                            {lesson.options?.map((option: string, index: number) => {
+                            {currentQuestionData.options?.map((option: string, index: number) => {
                                 let backgroundColor = COLORS.card;
                                 let borderColor = COLORS.cardBorder;
 
                                 if (isAnswered) {
-                                    if (index === lesson.correctIndex) {
+                                    if (index === currentQuestionData.correctIndex) {
                                         backgroundColor = 'rgba(34, 197, 94, 0.2)'; // Green tint
                                         borderColor = COLORS.success;
                                     } else if (index === selectedOption) {
@@ -119,10 +163,10 @@ export default function LessonScreen() {
                                             onPress={() => handleOptionPress(index)}
                                         >
                                             <Text style={styles.optionText}>{option}</Text>
-                                            {isAnswered && index === lesson.correctIndex && (
+                                            {isAnswered && index === currentQuestionData.correctIndex && (
                                                 <Ionicons name="checkmark-circle" size={24} color={COLORS.success} />
                                             )}
-                                            {isAnswered && index === selectedOption && index !== lesson.correctIndex && (
+                                            {isAnswered && index === selectedOption && index !== currentQuestionData.correctIndex && (
                                                 <Ionicons name="close-circle" size={24} color={COLORS.error} />
                                             )}
                                         </Pressable>
@@ -133,24 +177,24 @@ export default function LessonScreen() {
                     </View>
                 ) : (
                     <>
-                        <Text style={styles.title}>{lesson.title}</Text>
+                        <Text style={styles.title}>{displayContent.title || lesson.title}</Text>
                         <Text style={styles.description}>{lesson.description}</Text>
 
                         <View style={styles.card}>
-                            <Text style={styles.explanation}>{lesson.explanation}</Text>
+                            <Text style={styles.explanation}>{displayContent.explanation}</Text>
                         </View>
 
-                        {lesson.content && (
+                        {displayContent.content && (
                             <View>
                                 <Text style={styles.sectionHeader}>Code Example:</Text>
-                                <CodeCard code={lesson.content} />
+                                <CodeCard code={displayContent.content} />
                             </View>
                         )}
 
-                        {lesson.content && (
+                        {displayContent.content && (
                             <View style={styles.card}>
                                 <Text style={styles.sectionHeader}>Output:</Text>
-                                <Text style={styles.output}>{'> ' + (lesson.content.includes('print') ? (lesson.content.match(/"([^"]+)"/)?.[1] || 'Output') : 'Done')}</Text>
+                                <Text style={styles.output}>{'> ' + (displayContent.content.includes('print') ? (displayContent.content.match(/"([^"]+)"|'([^']+)'/)?.[1] || displayContent.content.match(/"([^"]+)"|'([^']+)'/)?.[2] || 'Output') : 'Done')}</Text>
                             </View>
                         )}
                     </>
@@ -166,7 +210,10 @@ export default function LessonScreen() {
                         style={{ opacity: (!isAnswered && selectedOption === null) ? 0.5 : 1 }}
                     />
                 ) : (
-                    <PrimaryButton title="Continue" onPress={handleNext} />
+                    <PrimaryButton
+                        title={lesson.pages && currentPage < lesson.pages.length - 1 ? "Next Page" : "Continue"}
+                        onPress={handleNext}
+                    />
                 )}
             </View>
         </GradientBackground>
@@ -184,6 +231,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: SPACING.m,
         paddingTop: SPACING.xl + 10,
         paddingBottom: SPACING.s,
+    },
+    headerTitleContainer: {
+        alignItems: 'center',
+    },
+    pageIndicator: {
+        color: COLORS.primary,
+        fontSize: 10,
+        fontWeight: 'bold',
+        marginTop: 2,
     },
     backButton: {
         padding: SPACING.xs,

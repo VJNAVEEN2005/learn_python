@@ -1,85 +1,116 @@
 export const level5Lessons = [
-    // 1️⃣ INTRO TO STRINGS
+    // 1️⃣ STRINGS BASICS
     {
         id: 'l5-1',
-        title: 'What are Strings?',
-        description: 'Work with text data.',
+        title: 'String Operations',
+        description: 'Manipulate text.',
         type: 'lesson',
         isCompleted: false,
-        content: `text = "Hello Python"
-print(text)`,
-        explanation:
-            'Strings are sequences of characters used to represent text in Python.',
+        pages: [
+            {
+                title: 'Introduction',
+                explanation: 'Strings are sequences of characters. You can access individual characters using indexing, just like lists.',
+                content: `text = "Hello"\nprint(text[0]) # Prints "H"`,
+            },
+            {
+                title: 'Slicing',
+                explanation: 'Slicing allows you to get a substring (a part of the string) by specifying a start and end index.',
+                content: `text = "Python"\nprint(text[0:2]) # Prints "Py"`,
+            },
+            {
+                title: 'Methods',
+                explanation: 'Strings come with useful methods like `upper()`, `lower()`, and `replace()` to modify the text.',
+                content: `text = "hello"\nprint(text.upper()) # "HELLO"`,
+            },
+        ],
+    },
+    {
+        id: 'l5-1q',
+        title: 'String Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'What does index 0 represent in a string?',
+                options: ['Last character', 'First character', 'Length', 'Middle'],
+                correctIndex: 1,
+            },
+            {
+                question: 'Which method makes text uppercase?',
+                options: ['uppercase()', 'toUpper()', 'upper()', 'cap()'],
+                correctIndex: 2,
+            },
+        ],
     },
 
-    // 2️⃣ STRING INDEXING & SLICING
+    // 2️⃣ FORMATTING
     {
         id: 'l5-2',
-        title: 'String Indexing & Slicing',
-        description: 'Access parts of a string.',
+        title: 'String Formatting',
+        description: 'Insert variables into text.',
         type: 'lesson',
         isCompleted: false,
-        content: `word = "Python"
-print(word[0])
-print(word[1:4])`,
-        explanation:
-            'String indexing starts from 0. Slicing allows extracting a portion of a string.',
+        pages: [
+            {
+                title: 'F-Strings',
+                explanation: 'F-strings are the easiest way to format strings. Just put an `f` before the quotes and wrap variables in curly braces `{}`.',
+                content: `name = "Alice"\nprint(f"Hello {name}")`,
+            },
+        ],
+    },
+    {
+        id: 'l5-2q',
+        title: 'Format Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which character starts an f-string?',
+                options: ['f', 'F', 's', 'format'],
+                correctIndex: 0,
+            },
+            {
+                question: 'How do you insert a variable?',
+                options: ['(var)', '[var]', '{var}', '<var>'],
+                correctIndex: 2,
+            },
+        ],
     },
 
-    // 3️⃣ STRING METHODS
+    // 3️⃣ FILES
     {
         id: 'l5-3',
-        title: 'String Methods',
-        description: 'Modify and analyze strings.',
+        title: 'File Operations',
+        description: 'Read and Write files.',
         type: 'lesson',
         isCompleted: false,
-        content: `text = "hello world"
-print(text.upper())
-print(text.replace("world", "Python"))`,
-        explanation:
-            'String methods like upper(), lower(), replace(), and split() help manipulate text.',
+        pages: [
+            {
+                title: 'Reading Files',
+                explanation: 'To read a file, use the `open()` function with mode "r". The `read()` method retrieves the content.',
+                content: `file = open("data.txt", "r")\ncontent = file.read()\nprint(content)\nfile.close()`,
+            },
+            {
+                title: 'Writing Files',
+                explanation: 'To write to a file, open it with mode "w". Be careful: this overwrites existing content!',
+                content: `file = open("new.txt", "w")\nfile.write("Hello File")\nfile.close()`,
+            },
+        ],
     },
-
-    // 4️⃣ STRING FORMATTING
     {
-        id: 'l5-4',
-        title: 'String Formatting',
-        description: 'Insert variables into strings.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `name = "Alice"
-age = 20
-print(f"My name is {name} and I am {age}")`,
-        explanation:
-            'f-strings allow easy and readable string formatting.',
-    },
-
-    // 5️⃣ READING FILES
-    {
-        id: 'l5-5',
-        title: 'Reading Files',
-        description: 'Read data from files.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `file = open("data.txt", "r")
-print(file.read())
-file.close()`,
-        explanation:
-            'Files can be opened in read mode to access their contents.',
-    },
-
-    // 6️⃣ WRITING FILES
-    {
-        id: 'l5-6',
-        title: 'Writing Files',
-        description: 'Write data to files.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `file = open("data.txt", "w")
-file.write("Hello File")
-file.close()`,
-        explanation:
-            'Files opened in write mode allow you to write data into them.',
+        id: 'l5-3q',
+        title: 'File Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which mode is for reading?',
+                options: ['w', 'r', 'a', 'x'],
+                correctIndex: 1,
+            },
+            {
+                question: 'Which mode creates a new file for writing?',
+                options: ['r', 'a', 'w', 'read'],
+                correctIndex: 2,
+            },
+        ],
     },
 
     // 🏁 FINAL QUIZ
@@ -93,76 +124,21 @@ file.close()`,
 ];
 
 export const level5Quizzes = {
-    'l5-q1': [
-        {
-            question: 'What is a string?',
-            options: [
-                'A number',
-                'A collection of characters',
-                'A loop',
-                'A file',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l5-q2': [
-        {
-            question: 'What does word[0] return?',
-            options: [
-                'Last character',
-                'First character',
-                'Whole string',
-                'Error',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l5-q3': [
-        {
-            question: 'Which method converts text to uppercase?',
-            options: ['upper()', 'capitalize()', 'toUpper()', 'big()'],
-            correctIndex: 0,
-        },
-    ],
-
-    'l5-q4': [
-        {
-            question: 'Which syntax is used for f-strings?',
-            options: [
-                `'"{}"'.format()`,
-                'f"{}"',
-                '"%"',
-                'concat()',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l5-q5': [
-        {
-            question: 'Which mode is used to read a file?',
-            options: ['w', 'a', 'r', 'x'],
-            correctIndex: 2,
-        },
-    ],
-
     'l5-final': [
         {
-            question: 'Which method replaces part of a string?',
-            options: ['change()', 'replace()', 'swap()', 'update()'],
+            question: 'What does split() do?',
+            options: ['Joins strings', 'Splits string into list', 'Removes characters', 'Nothing'],
             correctIndex: 1,
         },
         {
-            question: 'Which function opens a file?',
-            options: ['open()', 'read()', 'file()', 'load()'],
-            correctIndex: 0,
+            question: 'Which method serves to replace text?',
+            options: ['swap()', 'change()', 'replace()', 'switch()'],
+            correctIndex: 2,
         },
         {
-            question: 'Which mode is used to write a file?',
-            options: ['r', 'a', 'w', 'rw'],
-            correctIndex: 2,
+            question: 'Always remember to ___ a file after opening.',
+            options: ['save', 'close', 'delete', 'check'],
+            correctIndex: 1,
         },
     ],
 };

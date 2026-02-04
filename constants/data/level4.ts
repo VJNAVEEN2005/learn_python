@@ -1,96 +1,116 @@
 export const level4Lessons = [
-    // 1️⃣ INTRO TO FUNCTIONS
+    // 1️⃣ FUNCTIONS BASICS
     {
         id: 'l4-1',
-        title: 'What are Functions?',
-        description: 'Reusable blocks of code.',
+        title: 'Functions Basics',
+        description: 'Define and call functions.',
         type: 'lesson',
         isCompleted: false,
-        content: `def greet():
-    print("Hello!")`,
-        explanation:
-            'Functions are blocks of code that perform a specific task and can be reused multiple times.',
+        pages: [
+            {
+                title: 'What are Functions?',
+                explanation: 'Functions are reusable blocks of code that perform a specific task. They help keep your code organized and avoid repetition.',
+                content: `def greet():\n    print("Hello!")`,
+            },
+            {
+                title: 'Calling a Function',
+                explanation: 'Defining a function doesn\'t run it! You must "call" it by using its name followed by parentheses.',
+                content: `def greet():\n    print("Hello!")\n\ngreet() # Calls the function`,
+            },
+        ],
+    },
+    {
+        id: 'l4-1q',
+        title: 'Function Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which keyword defines a function?',
+                options: ['func', 'define', 'def', 'function'],
+                correctIndex: 2,
+            },
+            {
+                question: 'How do you call a function named "test"?',
+                options: ['test', 'call test', 'test()', 'run test'],
+                correctIndex: 2,
+            },
+        ],
     },
 
-    // 2️⃣ CALLING A FUNCTION
+    // 2️⃣ PARAMETERS & RETURN
     {
         id: 'l4-2',
-        title: 'Calling a Function',
-        description: 'Execute a function.',
+        title: 'Parameters & Return',
+        description: 'Pass data and get results.',
         type: 'lesson',
         isCompleted: false,
-        content: `def greet():
-    print("Hello!")
-
-greet()`,
-        explanation:
-            'A function runs only when it is called using its name followed by parentheses.',
+        pages: [
+            {
+                title: 'Parameters',
+                explanation: 'Parameters allow you to pass specific values (arguments) into a function so it can work with different data.',
+                content: `def greet(name):\n    print("Hello", name)\n\ngreet("Alice")\ngreet("Bob")`,
+            },
+            {
+                title: 'Return Values',
+                explanation: 'A function can send a value back to where it was called using `return`. This result can be stored in a variable.',
+                content: `def add(a, b):\n    return a + b\n\nresult = add(3, 5)\nprint(result) # Prints 8`,
+            },
+        ],
+    },
+    {
+        id: 'l4-2q',
+        title: 'Input/Output Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'What are values passed to a function called?',
+                options: ['Returns', 'Arguments', 'Loops', 'Globals'],
+                correctIndex: 1,
+            },
+            {
+                question: 'Which keyword sends a result back?',
+                options: ['back', 'output', 'return', 'send'],
+                correctIndex: 2,
+            },
+        ],
     },
 
-    // 3️⃣ FUNCTION PARAMETERS
+    // 3️⃣ SCOPE & DEFAULTS
     {
         id: 'l4-3',
-        title: 'Function Parameters',
-        description: 'Pass data to functions.',
+        title: 'Scope & Defaults',
+        description: 'Advanced function concepts.',
         type: 'lesson',
         isCompleted: false,
-        content: `def greet(name):
-    print("Hello", name)
-
-greet("Alice")`,
-        explanation:
-            'Parameters allow you to pass values into a function.',
+        pages: [
+            {
+                title: 'Default Parameters',
+                explanation: 'You can provide a default value for a parameter. If the caller doesn\'t pass a value, the default is used.',
+                content: `def greet(name="User"):\n    print("Hello", name)\n\ngreet() # Prints "Hello User"`,
+            },
+            {
+                title: 'Variable Scope',
+                explanation: 'Variables created inside a function are "local" (only exist there). Variables outside are "global".',
+                content: `x = 10 # Global\n\ndef show():\n    y = 5 # Local\n    print(y)\n\nshow()`,
+            },
+        ],
     },
-
-    // 4️⃣ RETURN VALUES
     {
-        id: 'l4-4',
-        title: 'Return Statement',
-        description: 'Get values back from functions.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `def add(a, b):
-    return a + b
-
-result = add(3, 5)
-print(result)`,
-        explanation:
-            'The return statement sends a value back to the caller.',
-    },
-
-    // 5️⃣ DEFAULT PARAMETERS
-    {
-        id: 'l4-5',
-        title: 'Default Parameters',
-        description: 'Provide default values.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `def greet(name="User"):
-    print("Hello", name)
-
-greet()
-greet("Bob")`,
-        explanation:
-            'Default parameters are used when no argument is provided.',
-    },
-
-    // 6️⃣ VARIABLE SCOPE
-    {
-        id: 'l4-6',
-        title: 'Variable Scope',
-        description: 'Local vs global variables.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `x = 10
-
-def show():
-    x = 5
-    print(x)
-
-show()
-print(x)`,
-        explanation:
-            'Variables inside a function are local, while variables outside are global.',
+        id: 'l4-3q',
+        title: 'Advanced Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Where can a local variable be accessed?',
+                options: ['Everywhere', 'Inside its function', 'Outside function', 'In other files'],
+                correctIndex: 1,
+            },
+            {
+                question: 'When is a default parameter used?',
+                options: ['Always', 'Never', 'When no argument is passed', 'When argument is None'],
+                correctIndex: 2,
+            },
+        ],
     },
 
     // 🏁 FINAL QUIZ
@@ -104,85 +124,20 @@ print(x)`,
 ];
 
 export const level4Quizzes = {
-    'l4-q1': [
-        {
-            question: 'What is a function?',
-            options: [
-                'A data type',
-                'A reusable block of code',
-                'A loop',
-                'A condition',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l4-q2': [
-        {
-            question: 'How do you call a function?',
-            options: [
-                'function name',
-                'function{}',
-                'function()',
-                'call function',
-            ],
-            correctIndex: 2,
-        },
-    ],
-
-    'l4-q3': [
-        {
-            question: 'What are parameters?',
-            options: [
-                'Values returned by function',
-                'Values passed to function',
-                'Function names',
-                'Loops',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l4-q4': [
-        {
-            question: 'Which keyword sends a value back?',
-            options: ['send', 'print', 'return', 'output'],
-            correctIndex: 2,
-        },
-    ],
-
-    'l4-q5': [
-        {
-            question: 'What is variable scope?',
-            options: [
-                'Variable type',
-                'Where variable can be accessed',
-                'Variable value',
-                'Variable size',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
     'l4-final': [
         {
-            question: 'Which keyword defines a function?',
-            options: ['func', 'define', 'def', 'function'],
+            question: 'What happens if a function does not return a value?',
+            options: ['Error', 'Returns 0', 'Returns None', 'Returns False'],
             correctIndex: 2,
         },
         {
-            question: 'What happens if a function has no return?',
-            options: [
-                'Error',
-                'Returns 0',
-                'Returns None',
-                'Returns false',
-            ],
-            correctIndex: 2,
+            question: 'Can a function call another function?',
+            options: ['Yes', 'No', 'Only if defined before', 'Only if global'],
+            correctIndex: 0,
         },
         {
-            question: 'Which variable is accessible everywhere?',
-            options: ['Local', 'Temporary', 'Global', 'Private'],
+            question: 'Which is correct syntax for a function?',
+            options: ['function myFunc:', 'def myFunc[]:', 'def myFunc():', 'func myFunc():'],
             correctIndex: 2,
         },
     ],

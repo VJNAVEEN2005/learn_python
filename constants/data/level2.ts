@@ -1,112 +1,131 @@
 export const level2Lessons = [
-    // 1️⃣ INTRO TO CONTROL FLOW
+    // 1️⃣ CONDITIONALS
     {
         id: 'l2-1',
-        title: 'What is Control Flow?',
-        description: 'Control the execution of your program.',
+        title: 'Conditionals',
+        description: 'Making decisions in code.',
         type: 'lesson',
         isCompleted: false,
-        content: `x = 10
-
-if x > 5:
-    print("x is greater than 5")`,
-        explanation:
-            'Control flow allows you to decide which code runs and how many times it runs based on conditions.',
+        pages: [
+            {
+                title: 'Control Flow',
+                explanation: 'Control flow allows you to decide which code runs and how many times it runs based on conditions. Without it, code simply runs from top to bottom.',
+                content: `x = 10\nif x > 5:\n    print("x is greater than 5")`,
+            },
+            {
+                title: 'The If Statement',
+                explanation: 'The `if` statement checks a condition. If the condition is True, the indented block of code runs. If it is False, the block is skipped.',
+                content: `age = 18\nif age >= 18:\n    print("Vote!")`,
+            },
+            {
+                title: 'If-Else',
+                explanation: 'What if you want to do something else when the condition is False? Use `else`. It catches anything that isn\'t caught by the `if`.',
+                content: `num = 3\nif num % 2 == 0:\n    print("Even")\nelse:\n    print("Odd")`,
+            },
+            {
+                title: 'Elif Statement',
+                explanation: '`elif` stands for "else if". It allows you to check for multiple conditions in a sequence. As soon as one is True, its code runs, and the rest are skipped.',
+                content: `score = 85\nif score >= 90:\n    print("A")\nelif score >= 80:\n    print("B")\nelse:\n    print("C")`,
+            },
+        ],
+    },
+    {
+        id: 'l2-1q',
+        title: 'Conditionals Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which keyword starts a conditional statement?',
+                options: ['check', 'when', 'if', 'loop'],
+                correctIndex: 2,
+            },
+            {
+                question: 'When does the `else` block execute?',
+                options: ['Always', 'When if is true', 'When if is false', 'Never'],
+                correctIndex: 2,
+            },
+            {
+                question: 'How do you check multiple conditions?',
+                options: ['else', 'elif', 'check', 'multi'],
+                correctIndex: 1,
+            },
+        ],
     },
 
-    // 2️⃣ IF STATEMENT
+    // 2️⃣ LOOPS
     {
         id: 'l2-2',
-        title: 'If Statement',
-        description: 'Run code based on conditions.',
+        title: 'Loops',
+        description: 'Repeating actions.',
         type: 'lesson',
         isCompleted: false,
-        content: `age = 18
-
-if age >= 18:
-    print("You are eligible to vote")`,
-        explanation:
-            'The if statement runs a block of code only when its condition is true.',
+        pages: [
+            {
+                title: 'The For Loop',
+                explanation: 'A `for` loop is used to iterate over a sequence (like a list or range of numbers). It repeats the code block for each item in the sequence.',
+                content: `for i in range(3):\n    print(i)\n# Prints 0, 1, 2`,
+            },
+            {
+                title: 'The While Loop',
+                explanation: 'A `while` loop keeps running as long as its condition is True. Be careful! If the condition never becomes False, you get an infinite loop.',
+                content: `count = 1\nwhile count <= 3:\n    print(count)\n    count += 1`,
+            },
+        ],
+    },
+    {
+        id: 'l2-2q',
+        title: 'Loops Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which loop is best when you know how many times to repeat?',
+                options: ['while', 'until', 'for', 'infinite'],
+                correctIndex: 2,
+            },
+            {
+                question: 'A while loop runs until...',
+                options: ['It hits 10', 'The condition is False', 'The condition is True', 'User stops it'],
+                correctIndex: 1,
+            },
+        ],
     },
 
-    // 3️⃣ IF-ELSE
+    // 3️⃣ LOOP CONTROL
     {
         id: 'l2-3',
-        title: 'If-Else Statement',
-        description: 'Choose between two paths.',
+        title: 'Loop Control',
+        description: 'Break and Continue.',
         type: 'lesson',
         isCompleted: false,
-        content: `num = 3
-
-if num % 2 == 0:
-    print("Even number")
-else:
-    print("Odd number")`,
-        explanation:
-            'The else block runs when the if condition is false.',
+        pages: [
+            {
+                title: 'Break Statement',
+                explanation: 'The `break` statement stops the loop immediately, even if the loop condition is still True. It "breaks" out of the loop.',
+                content: `for i in range(10):\n    if i == 5:\n        break\n    print(i)`,
+            },
+            {
+                title: 'Continue Statement',
+                explanation: 'The `continue` statement skips the rest of the current iteration and jumps back to the start of the loop for the next item.',
+                content: `for i in range(5):\n    if i == 2:\n        continue\n    print(i)\n# Skips 2`,
+            },
+        ],
     },
-
-    // 4️⃣ ELIF
     {
-        id: 'l2-4',
-        title: 'Elif Statement',
-        description: 'Check multiple conditions.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `marks = 75
-
-if marks >= 90:
-    print("Grade A")
-elif marks >= 60:
-    print("Grade B")
-else:
-    print("Grade C")`,
-        explanation:
-            'elif allows checking multiple conditions in sequence.',
-    },
-
-    // 5️⃣ FOR LOOP
-    {
-        id: 'l2-5',
-        title: 'For Loop',
-        description: 'Repeat code a fixed number of times.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `for i in range(5):
-    print(i)`,
-        explanation:
-            'A for loop is used to iterate over a sequence of values.',
-    },
-
-    // 6️⃣ WHILE LOOP
-    {
-        id: 'l2-6',
-        title: 'While Loop',
-        description: 'Repeat code while a condition is true.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `count = 1
-
-while count <= 3:
-    print(count)
-    count += 1`,
-        explanation:
-            'A while loop keeps running as long as its condition is true.',
-    },
-
-    // 7️⃣ BREAK & CONTINUE
-    {
-        id: 'l2-7',
-        title: 'Break and Continue',
-        description: 'Control loop execution.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `for i in range(5):
-    if i == 3:
-        break
-    print(i)`,
-        explanation:
-            'break stops the loop completely, while continue skips the current iteration.',
+        id: 'l2-3q',
+        title: 'Control Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'What does `break` do?',
+                options: ['Restarts loop', 'Exits loop', 'Skips iteration', 'Updates variable'],
+                correctIndex: 1,
+            },
+            {
+                question: 'What does `continue` do?',
+                options: ['Stops loop', 'Skips to next iteration', 'Breaks code', 'Nothing'],
+                correctIndex: 1,
+            },
+        ],
     },
 
     // 🏁 FINAL QUIZ
@@ -120,80 +139,20 @@ while count <= 3:
 ];
 
 export const level2Quizzes = {
-    'l2-q1': [
-        {
-            question: 'What does control flow do?',
-            options: [
-                'Styles the program',
-                'Controls execution order',
-                'Stores data',
-                'Prints output',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l2-q2': [
-        {
-            question: 'Which keyword is used for a condition?',
-            options: ['for', 'while', 'if', 'print'],
-            correctIndex: 2,
-        },
-    ],
-
-    'l2-q3': [
-        {
-            question: 'When does else run?',
-            options: [
-                'When if is true',
-                'Always',
-                'When if is false',
-                'Before if',
-            ],
-            correctIndex: 2,
-        },
-    ],
-
-    'l2-q4': [
-        {
-            question: 'Which loop is used when the number of iterations is known?',
-            options: ['while', 'repeat', 'for', 'loop'],
-            correctIndex: 2,
-        },
-    ],
-
-    'l2-q5': [
-        {
-            question: 'What does break do in a loop?',
-            options: [
-                'Skips one iteration',
-                'Stops the loop',
-                'Restarts the loop',
-                'Pauses execution',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
     'l2-final': [
         {
-            question: 'Which keyword checks multiple conditions?',
-            options: ['if', 'else', 'elif', 'when'],
-            correctIndex: 2,
-        },
-        {
-            question: 'Which loop runs while a condition is true?',
-            options: ['for', 'while', 'do-while', 'repeat'],
+            question: 'What is the output of range(3)?',
+            options: ['1, 2, 3', '0, 1, 2', '0, 1, 2, 3', '1, 2'],
             correctIndex: 1,
         },
         {
-            question: 'What does continue do?',
-            options: [
-                'Stops the loop',
-                'Skips current iteration',
-                'Ends program',
-                'Repeats loop forever',
-            ],
+            question: 'Which statement is used to handle the "everything else" case?',
+            options: ['elif', 'also', 'else', 'default'],
+            correctIndex: 2,
+        },
+        {
+            question: 'Can you nest if statements inside loops?',
+            options: ['No', 'Yes', 'Only while loops', 'Only for loops'],
             correctIndex: 1,
         },
     ],

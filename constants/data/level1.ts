@@ -18,9 +18,23 @@ export const level1Lessons = [
         description: 'Your first Python program.',
         type: 'lesson',
         isCompleted: false,
-        content: `print("Hello, World!")`,
-        explanation:
-            'The print() function is used to display output on the screen.',
+        pages: [
+            {
+                title: 'Introduction',
+                explanation: 'The print() function is the most basic way to communicate with your computer. It tells Python to display whatever is inside the parentheses on the screen.',
+                content: `print("Hello, World!")`,
+            },
+            {
+                title: 'Quotes in Python',
+                explanation: 'In Python, you can use either single quotes (\') or double quotes (") to create strings (text). Just make sure you start and end with the same type!',
+                content: `print('Single quotes work!')\nprint("Double quotes too!")`,
+            },
+            {
+                title: 'Multiple Items',
+                explanation: 'You can print multiple items at once by separating them with a comma. Python will automatically add a space between them for you.',
+                content: `print("Hello", "Python!")`,
+            }
+        ]
     },
 
     // 3️⃣ VARIABLES
@@ -30,12 +44,26 @@ export const level1Lessons = [
         description: 'Store data in variables.',
         type: 'lesson',
         isCompleted: false,
-        content: `name = "Alice"
-age = 20
-print(name)
-print(age)`,
+        content: `name = "Alice"\nage = 20\nprint(name)\nprint(age)`,
         explanation:
-            'Variables store values. Python automatically understands the data type.',
+            'Variables are like containers that store values. You give them a name using the equals sign (=). Python is smart enough to know what kind of data you are storing.',
+    },
+    {
+        id: 'l1-3q',
+        title: 'Variable Checks',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which is the correct way to create a variable named "x" with the value 5?',
+                options: ['x == 5', 'variable x = 5', 'x = 5', 'set x to 5'],
+                correctIndex: 2,
+            },
+            {
+                question: 'What will print(name) display if name = "Bob"?',
+                options: ['name', 'Bob', '"name"', 'Error'],
+                correctIndex: 1,
+            }
+        ]
     },
 
     // 4️⃣ DATA TYPES
@@ -45,11 +73,26 @@ print(age)`,
         description: 'Different types of data.',
         type: 'lesson',
         isCompleted: false,
-        content: `x = 10
-y = 3.14
-z = "Python"`,
+        content: `x = 10\ny = 3.14\nz = "Python"`,
         explanation:
-            'Integers, floats, and strings are common data types in Python.',
+            'Everything in Python has a type. Whole numbers are Integers (int), numbers with decimals are Floats, and text is called a String (str).',
+    },
+    {
+        id: 'l1-4q',
+        title: 'Data Type Checks',
+        type: 'question',
+        questions: [
+            {
+                question: 'What type of data is the number 42?',
+                options: ['String', 'Float', 'Integer', 'Boolean'],
+                correctIndex: 2,
+            },
+            {
+                question: 'What type of data is "Hello"?',
+                options: ['Integer', 'String', 'Float', 'List'],
+                correctIndex: 1,
+            }
+        ]
     },
 
     // 5️⃣ COMMENTS
@@ -59,10 +102,9 @@ z = "Python"`,
         description: 'Write notes inside code.',
         type: 'lesson',
         isCompleted: false,
-        content: `# This is a comment
-print("Hello")`,
+        content: `# This is a comment\nprint("Hello")`,
         explanation:
-            'Comments start with # and are ignored by Python.',
+            'Comments are notes for humans. They start with a # and Python completely ignores them when running your code.',
     },
 
     // 6️⃣ BASIC MATH
@@ -72,12 +114,21 @@ print("Hello")`,
         description: 'Perform calculations.',
         type: 'lesson',
         isCompleted: false,
-        content: `a = 10
-b = 5
-print(a + b)
-print(a * b)`,
+        content: `a = 10\nb = 5\nprint(a + b)\nprint(a * b)`,
         explanation:
-            'Python supports arithmetic operations like +, -, *, and /.',
+            'Python can be used like a calculator. It supports addition (+), subtraction (-), multiplication (*), and division (/).',
+    },
+    {
+        id: 'l1-6q',
+        title: 'Math Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'What is the symbol for multiplication in Python?',
+                options: ['x', '+', '*', '^'],
+                correctIndex: 2,
+            }
+        ]
     },
 
     // 🏁 FINAL QUIZ

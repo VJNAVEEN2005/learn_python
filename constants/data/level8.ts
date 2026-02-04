@@ -1,82 +1,154 @@
 export const level8Lessons = [
-    // 1️⃣ INTRO TO MINI PROJECTS
+    // 1️⃣ PROJECT 1: CALCULATOR
     {
         id: 'l8-1',
-        title: 'Introduction to Mini Projects',
-        description: 'Apply everything you learned.',
+        title: 'Mini Project: Calculator',
+        description: 'Build a calculator.',
         type: 'lesson',
         isCompleted: false,
-        content: `print("Welcome to Mini Projects!")`,
-        explanation:
-            'Mini projects help you apply Python concepts in real-world scenarios and build confidence.',
+        pages: [
+            {
+                title: 'Goal',
+                explanation: 'We will build a simple calculator that takes two numbers and performs addition, subtraction, multiplication, and division.',
+                content: `a = 10\nb = 5\nprint(a + b)`,
+            },
+            {
+                title: 'The Code',
+                explanation: 'We define variable `a` and `b`, then print the results of different mathematical operations.',
+                content: `a = 10\nb = 5\nprint("Sum:", a + b)\nprint("Difference:", a - b)\nprint("Product:", a * b)\nprint("Division:", a / b)`,
+            },
+        ],
+    },
+    {
+        id: 'l8-1q',
+        title: 'Calculator Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which operator is used for division?',
+                options: ['*', '%', '/', '#'],
+                correctIndex: 2,
+            },
+            {
+                question: 'If a=10 and b=5, what is a - b?',
+                options: ['15', '5', '50', '2'],
+                correctIndex: 1,
+            },
+        ],
     },
 
-    // 2️⃣ PROJECT 1: CALCULATOR
+    // 2️⃣ PROJECT 2: NUMBER GUESSING
     {
         id: 'l8-2',
-        title: 'Mini Project: Calculator',
-        description: 'Build a simple calculator.',
+        title: 'Mini Project: Guessing Game',
+        description: 'Guess the secret number.',
         type: 'lesson',
         isCompleted: false,
-        content: `a = 10
-b = 5
-print("Sum:", a + b)
-print("Difference:", a - b)
-print("Product:", a * b)
-print("Division:", a / b)`,
-        explanation:
-            'This project uses variables, math operations, and print statements.',
+        pages: [
+            {
+                title: 'Goal',
+                explanation: 'The computer has a secret number, and the user has to guess it. We compare the guess with the secret.',
+                content: `secret = 7\nguess = 7\nif guess == secret:\n    print("Win!")`,
+            },
+            {
+                title: 'The Code',
+                explanation: 'We use an `if-else` statement to check if the user\'s input matches the secret number.',
+                content: `secret = 7\nguess = int(input("Guess: "))\nif guess == secret:\n    print("Correct!")\nelse:\n    print("Wrong!")`,
+            },
+        ],
+    },
+    {
+        id: 'l8-2q',
+        title: 'Game Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which statement checks if the guess is correct?',
+                options: ['if', 'else', 'for', 'while'],
+                correctIndex: 0,
+            },
+            {
+                question: 'How do you check equality?',
+                options: ['=', '==', '===', 'equals'],
+                correctIndex: 1,
+            },
+        ],
     },
 
-    // 3️⃣ PROJECT 2: NUMBER GUESSING GAME
+    // 3️⃣ PROJECT 3: TO-DO LIST
     {
         id: 'l8-3',
-        title: 'Mini Project: Number Guessing Game',
-        description: 'Use loops and conditions.',
+        title: 'Mini Project: To-Do List',
+        description: 'Manage tasks with lists.',
         type: 'lesson',
         isCompleted: false,
-        content: `secret = 7
-guess = int(input("Enter a number: "))
-
-if guess == secret:
-    print("Correct!")
-else:
-    print("Wrong guess")`,
-        explanation:
-            'This project uses input, if-else conditions, and comparison operators.',
+        pages: [
+            {
+                title: 'Goal',
+                explanation: 'We want to store a list of tasks that we need to do. A Python `list` is perfect for this.',
+                content: `tasks = []`,
+            },
+            {
+                title: 'The Code',
+                explanation: 'We create an empty list and use `append()` to add tasks to it. Then we print the list to see our tasks.',
+                content: `tasks = []\ntasks.append("Learn Python")\ntasks.append("Build project")\nprint(tasks)`,
+            },
+        ],
+    },
+    {
+        id: 'l8-3q',
+        title: 'To-Do Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'Which data structure stores the tasks?',
+                options: ['List', 'Dictionary', 'Tuple', 'Set'],
+                correctIndex: 0,
+            },
+            {
+                question: 'Which method adds a task?',
+                options: ['add()', 'push()', 'append()', 'insert()'],
+                correctIndex: 2,
+            },
+        ],
     },
 
-    // 4️⃣ PROJECT 3: TO-DO LIST (CONSOLE)
+    // 4️⃣ PROJECT 4: QUIZ APP
     {
         id: 'l8-4',
-        title: 'Mini Project: To-Do List',
-        description: 'Manage tasks using lists.',
-        type: 'lesson',
-        isCompleted: false,
-        content: `tasks = []
-tasks.append("Learn Python")
-tasks.append("Build a project")
-print(tasks)`,
-        explanation:
-            'This project uses lists and basic data manipulation.',
-    },
-
-    // 5️⃣ PROJECT 4: SIMPLE QUIZ APP
-    {
-        id: 'l8-5',
         title: 'Mini Project: Quiz App',
-        description: 'Combine logic and questions.',
+        description: 'Ask questions and score points.',
         type: 'lesson',
         isCompleted: false,
-        content: `score = 0
-
-answer = input("What is 2 + 2? ")
-if answer == "4":
-    score += 1
-
-print("Score:", score)`,
-        explanation:
-            'This project combines variables, conditions, and user input.',
+        pages: [
+            {
+                title: 'Goal',
+                explanation: 'We will ask the user a question. If they answer correctly, we increase their score.',
+                content: `score = 0`,
+            },
+            {
+                title: 'The Code',
+                explanation: 'We check the answer using `if`. If it matches, we assume a correct answer and increment `score` by 1 using `+=`.',
+                content: `score = 0\nanswer = input("2+2? ")\nif answer == "4":\n    score += 1\nprint("Score:", score)`,
+            },
+        ],
+    },
+    {
+        id: 'l8-4q',
+        title: 'Quiz App Check',
+        type: 'question',
+        questions: [
+            {
+                question: 'How do you increase the score by 1?',
+                options: ['score++', 'score += 1', 'score = 1', 'score + 1'],
+                correctIndex: 1,
+            },
+            {
+                question: 'What function gets user input?',
+                options: ['get()', 'input()', 'ask()', 'scan()'],
+                correctIndex: 1,
+            },
+        ],
     },
 
     // 🏁 FINAL QUIZ
@@ -89,63 +161,21 @@ print("Score:", score)`,
     },
 ];
 
-
 export const level8Quizzes = {
-    'l8-q1': [
-        {
-            question: 'Why are mini projects important?',
-            options: [
-                'They are optional',
-                'They apply real concepts',
-                'They replace theory',
-                'They are only for experts',
-            ],
-            correctIndex: 1,
-        },
-    ],
-
-    'l8-q2': [
-        {
-            question: 'Which project uses lists?',
-            options: [
-                'Calculator',
-                'Guessing Game',
-                'To-Do List',
-                'Quiz App',
-            ],
-            correctIndex: 2,
-        },
-    ],
-
     'l8-final': [
         {
             question: 'Mini projects help you to?',
-            options: [
-                'Memorize syntax',
-                'Apply concepts practically',
-                'Avoid coding',
-                'Only read code',
-            ],
+            options: ['Memorize syntax', 'Apply concepts', 'Avoid coding', 'Only read'],
             correctIndex: 1,
         },
         {
             question: 'Which project uses input from user?',
-            options: [
-                'Calculator',
-                'Guessing Game',
-                'To-Do List',
-                'All of the above',
-            ],
+            options: ['Calculator', 'Guessing Game', 'To-Do List', 'All of the above'],
             correctIndex: 3,
         },
         {
             question: 'After completing mini projects, you should feel?',
-            options: [
-                'Confused',
-                'Confident',
-                'Bored',
-                'Finished forever',
-            ],
+            options: ['Confused', 'Confident', 'Bored', 'Finished forever'],
             correctIndex: 1,
         },
     ],

@@ -6,7 +6,7 @@ export const LEVELS = [
         description: 'Start your Python journey from scratch.',
         isLocked: false,
         progress: 0,
-        totalLessons: 6,
+        totalLessons: 10,
         completedLessons: 0,
     },
     {
@@ -26,7 +26,7 @@ export const LEVELS = [
         description: 'Work with lists, tuples, sets, and dictionaries.',
         isLocked: true,
         progress: 0,
-        totalLessons: 8,
+        totalLessons: 7,
         completedLessons: 0,
     },
     {
@@ -36,7 +36,7 @@ export const LEVELS = [
         description: 'Write reusable and clean code.',
         isLocked: true,
         progress: 0,
-        totalLessons: 6,
+        totalLessons: 7,
         completedLessons: 0,
     },
     {
@@ -46,7 +46,7 @@ export const LEVELS = [
         description: 'Work with text and files in Python.',
         isLocked: true,
         progress: 0,
-        totalLessons: 6,
+        totalLessons: 7,
         completedLessons: 0,
     },
     {
@@ -56,7 +56,7 @@ export const LEVELS = [
         description: 'Handle errors and write safe programs.',
         isLocked: true,
         progress: 0,
-        totalLessons: 5,
+        totalLessons: 7,
         completedLessons: 0,
     },
     {
@@ -66,7 +66,7 @@ export const LEVELS = [
         description: 'Understand classes and objects.',
         isLocked: true,
         progress: 0,
-        totalLessons: 6,
+        totalLessons: 7,
         completedLessons: 0,
     },
     {
@@ -76,7 +76,7 @@ export const LEVELS = [
         description: 'Apply everything you learned.',
         isLocked: true,
         progress: 0,
-        totalLessons: 4,
+        totalLessons: 9,
         completedLessons: 0,
     },
 ];
